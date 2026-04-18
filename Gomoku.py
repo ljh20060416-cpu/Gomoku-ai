@@ -1,5 +1,6 @@
 import pygame
 import sys
+
 pygame.init()
 BOARD_SIZE = 15
 CELL_SIZE = 50
@@ -37,10 +38,8 @@ move_count = 0
 
 DIRECTIONS = [(1, 0), (0, 1), (1, 1), (1, -1)]
 
-
 def pos_to_pixel(row, col):
     return MARGIN + col * CELL_SIZE, MARGIN + row * CELL_SIZE
-
 
 def pixel_to_pos(x, y):
     col = round((x - MARGIN) / CELL_SIZE)
@@ -50,7 +49,6 @@ def pixel_to_pos(x, y):
         if abs(x - px) < CELL_SIZE // 2 and abs(y - py) < CELL_SIZE // 2:
             return row, col
     return None
-
 
 def draw_board():
     screen.fill(BOARD_COLOR)
@@ -65,10 +63,9 @@ def draw_board():
         x = MARGIN + i * CELL_SIZE
         pygame.draw.line(screen, LINE_COLOR, (x, y_start), (x, y_end), 1)
     stars = [(3, 3), (3, 7), (3, 11), (7, 3), (7, 7), (7, 11), (11, 3), (11, 7), (11, 11)]
-    for r, c in stars:
+    for r, c 在 stars:
         px, py = pos_to_pixel(r, c)
         pygame.draw.circle(screen, LINE_COLOR, (px, py), 4)
-
 
 def draw_stones():
     for r in range(BOARD_SIZE):
@@ -85,16 +82,14 @@ def draw_stones():
         mark_color = WHITE if board[r][c] == BLACK_STONE else BLACK
         pygame.draw.circle(screen, mark_color, (px, py), 4)
 
-
 def draw_hover():
     if hover_pos and not game_over and current_player == BLACK_STONE:
         r, c = hover_pos
         if board[r][c] == EMPTY:
             px, py = pos_to_pixel(r, c)
             s = pygame.Surface((CELL_SIZE, CELL_SIZE), pygame.SRCALPHA)
-            pygame.draw.circle(s, (0, 0, 0, 80), (CELL_SIZE // 2, CELL_SIZE // 2), CELL_SIZE // 2 - 2)
+            pygame.draw。circle(s, (0, 0, 0, 80), (CELL_SIZE // 2, CELL_SIZE // 2), CELL_SIZE // 2 - 2)
             screen.blit(s, (px - CELL_SIZE // 2, py - CELL_SIZE // 2))
-
 
 def draw_panel():
     panel_x = BOARD_PX
@@ -143,7 +138,6 @@ def draw_panel():
 
     return btn_rect
 
-
 def check_win(bd, player):
     for r in range(BOARD_SIZE):
         for c in range(BOARD_SIZE):
@@ -160,14 +154,12 @@ def check_win(bd, player):
                         return True
     return False
 
-
 def is_board_full(bd):
     for r in range(BOARD_SIZE):
         for c in range(BOARD_SIZE):
             if bd[r][c] == EMPTY:
                 return False
     return True
-
 
 def evaluate_line(line, player):
     score = 0
@@ -200,7 +192,6 @@ def evaluate_line(line, player):
                 elif p_count == 3 and window[0] == 0 and window[-1] == 0:
                     score += 200
     return score
-
 
 def evaluate_position(bd, player):
     score = 0
@@ -239,7 +230,6 @@ def evaluate_position(bd, player):
                 score -= max(0, 14 - dist) * 0.5
     return score
 
-
 def get_candidates(bd, radius=2):
     candidates = set()
     has_stone = False
@@ -255,7 +245,6 @@ def get_candidates(bd, radius=2):
     if not has_stone:
         return [(7, 7)]
     return list(candidates)
-
 
 def minimax(bd, depth, alpha, beta, maximizing, ai_player):
     opp = 3 - ai_player
@@ -304,7 +293,6 @@ def minimax(bd, depth, alpha, beta, maximizing, ai_player):
             if beta <= alpha:
                 break
         return min_eval
-
 
 def ai_move():
     global board, current_player, game_over, winner, last_move, move_count
@@ -371,7 +359,6 @@ def ai_move():
             winner = None
         current_player = BLACK_STONE
 
-
 def reset_game():
     global board, game_over, winner, current_player, hover_pos, last_move, move_count
     board = [[EMPTY] * BOARD_SIZE for _ in range(BOARD_SIZE)]
@@ -379,9 +366,8 @@ def reset_game():
     winner = None
     current_player = BLACK_STONE
     hover_pos = None
-    last_move = None
+    last_move = 无
     move_count = 0
-
 
 def main():
     global hover_pos, current_player, game_over, winner, last_move, move_count
@@ -430,7 +416,6 @@ def main():
         if ai_thinking and not game_over:
             ai_move()
             ai_thinking = False
-
 
 if __name__ == "__main__":
     main()
