@@ -3,39 +3,30 @@
 [![Pygame](https://img.shields.io/badge/Pygame-2.0%2B-green)](https://www.pygame.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-&gt; 基于 Pygame 的五子棋人机对战游戏，AI 采用 **Minimax + Alpha-Beta 剪枝** 算法，具备即时杀棋识别与启发式局面评估能力。
+一个使用 Pygame 实现的五子棋人机对战游戏，采用基于 Minmax 算法与 Alpha-Beta 剪枝的 AI 对手。
 
----
+## 功能特点
 
-## 功能特性
+- **图形界面**：简洁的棋盘绘制与棋子展示。
+- **人人对战（默认玩家执黑先行）**：玩家点击鼠标落子，AI 自动执白响应。
+- **AI 决策**：
+  - 采用带有历史表启发的迭代加深 Minmax 搜索。
+  - Alpha-Beta 剪枝优化搜索效率。
+  - 基于位置的权重评估与棋型评分表。
+- **交互提示**：
+  - 实时显示当前回合。
+  - 鼠标悬停显示半透明落子预览。
+  - 最后一次落子位置用红点标记。
+- **游戏重置**：按 `R` 键重新开始对局。
 
-- [x] 可视化 15×15 标准五子棋棋盘
-- [x] 人机对战（玩家执黑先行，AI 执白后手）
-- [x] 实时胜负判定与平局检测
-- [x] AI 智能分层决策：
-  - **L1 规则层**：即时响应必胜/必败点
-  - **L2 搜索层**：Minimax 博弈树搜索 + Alpha-Beta 剪枝
-  - **L3 评估层**：连子形状评分 + 棋盘位置偏好
-- [x] 最后落子标记、悬停预览、步数统计
-- [x] 侧边栏 UI 与重新开始功能
+## 环境要求
 
----
+- Python 3.7+
+- Pygame 库
 
 ## 安装与运行
 
-### 环境要求
-- Python 3.7+
-- Pygame
-
-### 快速开始
-
-```bash
-# 克隆仓库
-git clone https://github.com/yourusername/gomoku-ai.git
-cd gomoku-ai
-
-# 安装依赖
-pip install pygame
-
-# 启动游戏
-python gomoku.py
+1. 克隆或下载本项目代码。
+2. 安装依赖：
+   ```bash
+   pip install pygame
