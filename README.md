@@ -1,7 +1,6 @@
 # Gomoku-ai
 [![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/)
 [![Pygame](https://img.shields.io/badge/Pygame-2.0%2B-green)](https://www.pygame.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 一个使用 Pygame 实现的五子棋人机对战游戏，采用基于 Minmax 算法与 Alpha-Beta 剪枝的 AI 对手。
 
